@@ -1,0 +1,16 @@
+Bloque 1/2/3
+============
+
+Edición mediante el inspeccionador: OK
+
+Formulario GET: Muy buen uso de los elementos HTML. El resultado está perfecto.
+Lo que se necesita ir mejorando es la cuestión del identado de código.
+El espacio que se va utilizando para escribir los elementos.
+En este caso usás separación por espacios. Podés usar directamente tabuladores para
+facilitar el trabajo.
+
+Calculadora: Está perfecta. Mismo comentario sobre la identación del código.
+
+Formulario POST: Pendiente
+
+Manejo de GIT: En lo posible te conviene mantener las actividades dentro de carpetas para que no se mezclen. Sino, puede que se te pisen archivos corrompiendo trabajos anteriores.
