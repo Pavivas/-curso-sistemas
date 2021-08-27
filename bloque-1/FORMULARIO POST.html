@@ -1,0 +1,112 @@
+
+
+<!DOCTYPE html PUBLIC >
+<html  lang="en">
+
+<head>
+	<title>Formulario Post </title>
+	<meta charset="utf-8" />
+	
+</head>
+
+<body>
+	<h1>Create Account</h1>
+
+<form action="action_page.php" method="POST" >
+  
+<table >
+ 
+     <tr>   
+	      
+	      <td><label for="fname">First name*</label><br>
+              <input type="text" id="fname" name="fname" autofocus></td>
+          
+          <td><label for="lname">Last name*</label><br>
+          <input type="text" id="lname" name="lname"></td>
+         
+     </tr>
+       
+     <tr> 
+		
+          <td colspan="2"><label for="Email">Email*</label><br>
+         	<input type="email" name="email" colspan="4">
+	  </td>
+         
+    </tr>
+    <tr>  
+		 
+          <td> <label  for="Pword">Password*</label><br>
+              <input type="password" id="pword" name="pword">
+          </td>
+          
+          <td><label for="Cpword">Confirm password*</label><br>
+              <input type="text" id="cpword" name="cpword">
+          </td>
+    
+     </tr>
+     <tr>
+        <td><label>Gender</label><br>
+        	<input type="checkbox" id="male" name="male" value="male">
+        	<label for="male">Male</label>
+        	<input type="checkbox" id="female" name="female" value="female">
+        	<label for="female">Female</label>
+        </td>
+        
+        <td><label>Hobbies</label><br>
+        	<input type="checkbox" id="music" name="music" value="music">
+        	<label for="music">Music</label>
+        	<input type="checkbox" id="sports" name="sports" value="sports">
+        	<label for="sports">Sports</label>
+        	<input type="checkbox" id="travel" name="travel" value="travel">
+        	<label for="travel">Travel</label>
+        	<input type="checkbox" id="movies" name="movies" value="movies">
+        	<label for="movies">Movies</label>
+       </td>
+     </tr>
+ 
+   <tr>
+
+       <td><label>Source of income</label><br>
+           <select name="sourse" id="sourse">
+           <option value="employed">employed</option>
+           <option value="inversment">inversment</option>
+           <option value="retired">retired</option>
+           </select>
+       </td>
+ 
+        <td><label>Income</label><br>         
+            
+            <input type="range"  id="a" name="a" value="50">
+            20 
+            
+        </td>
+       
+   </tr>
+   <tr>
+	<td><label>Upload Profile Picture</label><br>
+	    <input type="file"name="file">
+	</td>
+        <td><label>Age</label><br>
+	    <input type="number"name="age" value="18">
+	</td>
+   </tr>
+  <tr>
+	<td colspan="2"><label>Bio</label><br>
+	    <textarea name="cuerpo">
+	    </textarea>
+        </td>
+  </tr>
+
+
+  </table>
+
+
+   <button>Create</button> 
+
+	
+   </form>	
+	
+	
+ </body>
+
+</html>
