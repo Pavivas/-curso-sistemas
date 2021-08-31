@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC >
+<html lang="en">
+
+    <head>
+	<title>Formulario POST</title>
+	<meta charset="utf-8" />
+	
+	</head>
+ 
+<body>
+	<form action="/action_page.php" method="post">
+      <label>Nombre:</label>
+      <input type="text" name= "Nombre"></input>
+
+      <label>Apellido:</label>
+      <input type="text" name= "Apellido"></input>
+
+          <br></br>
+      
+      <label>Correo Electronico:</label>
+      <input type="email" name= "email"></input> 
+         <br></br>
+ 
+      <label>Poblacion:</label>
+      <input type="text"></input> 
+      
+      <label>Provincia:</label>
+      <input type="text"></input>
+
+       <br></br>        
+       
+       <label>Edad</label>
+       <br></br>  
+       
+       <input type="radio" name="edad"></input>
+       <label>0-20</label>
+       <br></br>
+       
+       <input type="radio" name="edad"></input>
+       <label>20-40</label>
+       <br></br>
+       
+       <input type="radio" name="edad"></input>
+       <label>40-60</label>
+       <br></br>
+       
+       <input type="radio" name="edad"></input>
+       <label>60-100</label>
+       <br></br>
+        
+        <label>Como nos conociste?</label>
+              <br></br>  
+        
+        <input type="checkbox" id="conocio1" name="conocio1" value="amigo">
+        <label for="vehicle1">A traves de un amigo.</label><br>
+       
+        <input type="checkbox" id="conocio2" name="conocio2" value="buscador">
+        <label for="vehicle2">A traves de un buscador.</label></br>
+        
+        <input  type="checkbox" id="conocio3" name="conocio3" value="red">
+        <label for="vehicle3">Navegando por la red.</label></br>
+        
+        <input type="checkbox" id="conocio4" name="conocio4" value="otros">
+        <label for="vehicle4">Otros.</label></br>
+        <br></br>
+        
+        <label>Opinion sobre nuestra pagina web</label>
+        <br></br>
+        <textarea name= "cuerpo">Escribe...</textarea>
+         <br></br>  
+       
+        <label>Tenes alguna sugerencia</label>
+        <br></br>  
+        <textarea name= "cuerpo">Escribe tus sugerencias...</textarea>
+        <br></br>  
+       
+        <label>Cuanto navegas por internet?(Señala la opcion mas aproximada)</label>
+        <br></br>
+        <select name="horas" id="horas">
+        <option value="2 horas">2 horas</option>
+        <option value="4 horas">4 horas</option>
+        </select>
+       <br></br>
+       
+       <tr>
+       <td><button>Enviar formulario</button></td>
+       <td><button>Borrar formulario</button></td>
+       </tr>
+        
+        </form>
+</body>
+
+</html>
+
