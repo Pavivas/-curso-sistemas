@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Practica 1 de programaciรณn</title>
+    </head>
+
+    <body></body>
+
+    <script type="text/javascript">
+
+    //Estrategia-1/B "Objetos"
+    //Pensamos: Primero escribir las filas, y luego las columnas tabla[fila][columna]
+
+    let tabla =
+    {
+        leche:
+        {
+            porcion: 200,
+            contenido_calcio: 280
+        },
+        yogur_bebible:
+        {
+            porcion: 200,
+            contenido_calcio: 180
+        },
+        yogur_firme:
+        {
+            porcion: 190,
+            contenido_calcio: 293
+        },
+        postre:
+        {
+            porcion: 190,
+            contenido_calcio: 143
+        },
+        queso_rallado:
+        {
+            porcion: 8,
+            contenido_calcio: 104
+        }
+    };
+
+    function identificarLacteoDeMayorContenidoDeCalcio( tabla_de_datos )
+    {
+        let referencia = null;
+        let nombre_del_lacteo = null;
+
+        for ( const nombreDelObjeto in tabla_de_datos )
+        {
+            if ( tabla_de_datos[nombreDelObjeto].contenido_calcio > referencia )
+            {
+                referencia = tabla_de_datos[nombreDelObjeto].contenido_calcio;
+                nombre_del_lacteo = nombreDelObjeto;
+            } 
+        }
+
+        return nombre_del_lacteo;
+    }
+   
+
+    </script>
+</html>
+
+

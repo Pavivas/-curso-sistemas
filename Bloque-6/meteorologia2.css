@@ -1,0 +1,22 @@
+table, tr, td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.temp_39_36
+{
+    background-color: #f60000;
+    font-family: arial;
+    font-size: 22px;
+    font-weight: bold;
+
+    animation-name: test;
+	animation-duration: 5s;
+}
+
+@keyframes test
+{
+  0%   {background-color: #ffffff;}
+  100% {background-color: #f60000;}
+}

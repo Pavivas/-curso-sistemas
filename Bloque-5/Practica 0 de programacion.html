@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC >
+<html lang="en">
+
+<head>
+	<title>Practica 0 de Programacion</title>
+	<meta charset=" utf-8" />
+	
+</head>
+<body></body>
+<script type="text/javascript">
+  
+     // Desarrollar un programa que pase de C° a F°
+  
+     let temperatura_celsius;
+     let temperatura_fahrenheit;
+
+  // Convertir de grados C° a F° 
+  
+     function convertir_celsius_a_fahrenheit(temperatura_en_celsius )
+      {
+
+	     let resultado_en_fahrenheit = ( temperatura_en_celsius * 1.8) + 32 ;
+	 
+         return resultado_en_fahrenheit;
+  
+	   }
+    
+   //Escribir el programa (la ejecución)
+	    temperatura_celsius = prompt("Ingrese temperatura en grados ºC: ");
+	    temperatura_fahrenheit = null;
+
+	    temperatura_fahrenheit = convertir_celsius_a_fahrenheit( temperatura_celsius );
+       alert("La temperatura de " + temperatura_celsius + "ºC son " + temperatura_fahrenheit.toFixed(2) + "ºF");
+
+   </script>
+
+
+</html>

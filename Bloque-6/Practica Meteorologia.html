@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <link href="meteorologia.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body id="gui">
+        
+
+    </body>
+
+    <script type="text/javascript">
+        
+    let datos =
+    [
+        ["temperaturas max", 39.3, 38.1, 36.3],
+        ["temperaturas min", 39.3, 38.1, 36.3,"hola",98,98],
+        ["temperaturas media", 39.3, 38.1, 36.3]
+    ];
+
+    
+
+    let generateHTMLCode = tabla_de_datos =>
+    {
+        let HTMLCode = '<table>';
+
+        for ( let fila=0; fila<tabla_de_datos.length; fila++ )
+        {
+            HTMLCode+= '<tr>';
+
+            for ( let columna=0; columna<tabla_de_datos[fila].length; columna++ )
+            {
+                HTMLCode+='<td>';
+                HTMLCode+=`${ tabla_de_datos[fila][columna]}`;
+                HTMLCode+='</td>';
+            }
+
+            HTMLCode+= '</tr>';
+        }
+
+        HTMLCode += '</table>';
+
+        return HTMLCode;
+    }
+
+    let body = document.getElementById("gui");
+    body.innerHTML = generateHTMLCode(datos);
+
+    </script>
+</html>

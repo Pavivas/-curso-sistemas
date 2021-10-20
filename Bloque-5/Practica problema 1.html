@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Practica problema 1 </title>
+</head>
+<body></body>
+
+<script type="text/javascript">
+
+let tabla = 
+[
+  ["leche",200,280],
+  ["yogurt bebible",200,180],
+  ["yogurt firme",10,293],
+  ["postre",125,143],
+  ["queso rallado",8,104]
+]
+function identificarLacteodeMayorContenidodeCalcio(tabla_de_datos)
+{
+    let referencia= null;
+    let nombre_del_lacteo=null;
+
+    for( let numeroFila = 0; numeroFila < tabla_de_datos.leight; numeroFila++)
+                 
+   {
+       if( tabla_de_datos[numeroFila][2]> referencia)
+   {
+       referencia= tabla_de_datos[numeroFila] [2];
+       nombre_del_lacteo= tabla_de_datos[numeroFila][0];
+   }
+   
+    }
+
+   return nombre_del_lacteo;
+
+} 
+
+</script>
+</html>

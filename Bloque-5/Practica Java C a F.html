@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <meta charset="utf-8">
+  <title>Practica Java C a F</title>
+    </head>
+     <body></body>
+     <script type="text/javascript">
+
+      let temperatura_en_celcius ;
+      let temperatura_en_fahrenheit ;
+
+      function convertir_celcius_a_fahrenheit (temperatura_en_celcius)
+
+      {
+
+       let resultado_en_fahrenheit = (temperatura_en_celcius * 1.8) + 32;
+       
+       return  resultado_en_fahrenheit ;
+
+      }
+      
+      temperatura_en_celcius= prompt ("Ingrese temperatura en grados °C:");
+      temperatura_en_fahrenheit = null ;
+     
+      temperatura_en_fahrenheit = convertir_celcius_a_fahrenheit(temperatura_en_celcius);
+      alert("La temperatura de " + temperatura_en_celcius + "°C son "+ temperatura_en_fahrenheit.toFixed(2) + "°F" );
+
+      </script>
+</html>

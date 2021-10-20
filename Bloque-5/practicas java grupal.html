@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<title>Practica grupal</title>
+</head>
+<body></body>
+<script type="text/javascript">
+
+    let precio_lacteo = 89.0;
+    let precio_limpieza =125.6 ;
+    let precio_bebidas = 95.23 ;
+    let precio_pan = 74.3 ;
+    let precio_fiambres = 314.7 ;
+
+    let lacteo_incremento = 15;
+    let limpieza_incremento = 22.5;
+    let bebidas_incremento = 34 ;
+    let pan_incremento= 27;
+    let fiambres_incremento = 31.7 ;
+
+    function actualizar( precio_articulo ,incremento )
+    
+    {
+
+    let precio_actualizado = precio_articulo * ( incremento/100 + 1);
+    return precio_actualizado;
+
+    }
+
+    precio_lacteo = actualizar(precio_lacteo,lacteo_incremento);
+    precio_limpieza = actualizar(precio_limpieza, limpieza_incremento);
+    precio_bebidas = actualizar(precio_bebidas,bebidas_incremento);
+    precio_pan = actualizar(precio_pan,pan_incremento);
+    precio_fiambres = actualizar(precio_fiambres,fiambres_incremento);
+    
+    console.log(precio_lacteo);
+    console.log(precio_limpieza);
+    console.log(precio_bebidas);
+    console.log(precio_pan);
+    console.log(precio_fiambres);
+
+</script>
+
+</html>

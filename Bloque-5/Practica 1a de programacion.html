@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Práctica 1a de programación</title>
+    </head>
+
+    <body></body>
+
+    <script type="text/javascript">
+
+    //Estrategia-1/A "Arrays puros"
+    //Pensamos: Primero escribir las filas, y luego las columnas tabla[fila][columna]
+
+    let tabla =
+    [
+        ["Leche", 200, 280 ],
+        ["Yogurt bebible", 200, 180],
+        ["Yogurt firme", 190, 293 ],
+        ["Postre", 125, 143 ],
+        ["Queso rallado", 8, 104 ]
+    ];
+
+    function identificarLacteoDeMayorContenidoDeCalcio( tabla_de_datos )
+    {
+        
+        //ordenar es una posibilidad
+        //comparación es otra posibilidad
+
+        //¿Qué necesitamos?
+        // 1. Recorrer la tabla de principio a fin (fila por fila)
+        // 2. Debemos chequear que cada valor que vamos leyendo de la fila, sea mayor a una referencia conocida.
+        // 3. Si detectamos que hay un valor que es mayor a la referencia, entonces actualizo la referencia.
+        // 4. Debemos también, si se actualiza la referencia, guardar el nombre.
+
+        //principio de la tabla --> tabla[0]  
+        //final de la tabla --> tabla.length
+
+        let referencia = null;
+        let nombre_del_lacteo = null;
+
+        for( let numeroFila = 0; numeroFila < tabla_de_datos.length; numeroFila++ )
+        {
+            if ( tabla_de_datos[numeroFila][2] > referencia )
+            {
+                referencia = tabla_de_datos[numeroFila][2];
+                nombre_del_lacteo = tabla_de_datos[numeroFila][0];
+            }
+        }
+
+        return nombre_del_lacteo;
+    }
+   
+
+    </script>
+</html>
+
+
