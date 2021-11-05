@@ -1,0 +1,17 @@
+table, td, tr
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-family: arial;
+}
+
+body
+{
+	font-family: "Roboto", sans-serif
+}
+
+.w3-bar-block .w3-bar-item 
+{
+	padding: 16px;
+	font-weight: bold;
+}
