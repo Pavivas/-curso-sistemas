@@ -1,0 +1,60 @@
+
+
+
+
+
+.dolar 
+{
+     color:white;
+     text-align: center;
+     margin-top: auto;
+     margin-left: 15px;
+     background-color: rgb(62, 78, 29) ;
+     padding: 8px;
+     margin-top: 15px;
+     height: 50px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+.compra
+{
+     color:black;
+     text-align: center;
+     margin-left: 15px;
+     background-color: rgb(209, 247, 134) ;
+     padding: 8px;
+     height: 30px;
+     
+    
+}
+.numeros
+{
+     color:black;
+     text-align: center;
+     margin-left: 15px;
+     background-color: rgb(209, 247, 134) ;
+     padding: 8px;
+     height: 40px;
+}
+.variacion
+{
+    color:black;
+     text-align: center;
+     margin-left: 15px;
+     background-color:white;
+     padding: 8px;
+     height: 40px;
+    }
+    
+
+.actualizado
+{
+    color:white;
+    text-align: center;
+    margin-left: 15px;
+    background-color: rgb(62, 78, 29);
+    padding: 8px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
