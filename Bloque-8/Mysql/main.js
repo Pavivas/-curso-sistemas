@@ -4,7 +4,8 @@ let HTMLApplicationView = () =>
   <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>
   <a id="closeSidebarButton" class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   <a class="w3-bar-item w3-button w3-teal" href="#">Home</a>
-  <a id="userModuleButton" class="w3-bar-item w3-button" href="#">Gestiรณn de usuarios</a>
+  <a id="userModuleButton" class="w3-bar-item w3-button" href="#">Gestión de usuarios</a>
+  <a id="userLogoutBtn" class="w3-bar-item w3-button" href="#">Cerrar sesión</a>
   <div>
     <div id="demo" class="w3-hide">
       <a class="w3-bar-item w3-button" href="#">Link</a>
@@ -33,6 +34,46 @@ let HTMLApplicationView = () =>
 
 }
 
+
+let modal = ( HTMLDialogFormElement, confirmAction, cancelAction ) =>
+{
+    let modalElement = document.getElementById('modal-application-dialog');
+   
+    modalElement.innerHTML =
+    `<div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-teal"> 
+        <span id="cancel" class="w3-button w3-display-topright">&times;</span>
+    </header>
+    ${ HTMLDialogFormElement.HTMLDialogView }
+        <button id="confirm">Accept</button> 
+    </div>`;
+
+    let confirmButtonClick = (event) =>
+    {
+        if ( confirmAction != undefined || confirmAction != null )
+            confirmAction( HTMLDialogFormElement.formData() );
+        
+        modalElement.style.display = 'none';
+        modalElement.removeEventListener('click',confirmButtonClick);
+        modalElement.removeEventListener('click',cancelButtonClick);
+    }
+
+    let cancelButtonClick = (event) =>
+    {
+        if ( cancelAction != undefined || cancelAction != null )
+            cancelAction(HTMLDialogFormElement.formData());
+                
+        modalElement.style.display = 'none';
+        modalElement.removeEventListener('click',confirmButtonClick);
+        modalElement.removeEventListener('click',cancelButtonClick);
+    }
+
+    document.getElementById('confirm').addEventListener('click', confirmButtonClick );
+    document.getElementById('cancel').addEventListener('click', cancelButtonClick );
+
+    modalElement.style.display = 'block';
+}
+
 let openSidebar = () =>
 {
 	document.getElementById("mySidebar").style.display = "block";
@@ -54,11 +95,32 @@ let applicationView = () =>
     document.getElementById('myOverlay').addEventListener('click', closeSidebar);
 
     document.getElementById('userModuleButton').addEventListener('click', ()=>{ userModule.read(); closeSidebar();} );
+    document.getElementById('userLogoutBtn').addEventListener('click', ()=>{ auth.logout(null) });
+}
+
+let on_login = (event) =>
+{
+  applicationView();
+}
+
+let on_logout = (event) =>
+{
+  authView.login("application");
+}
+
+let on_user_read = (event) =>
+{
+  if ( event.currentTarget.status == 200 )
+  {
+     let serverResponse = event.currentTarget.responseText;
+     data = JSON.parse(serverResponse)       
+     alert( data );
+  }
 }
 
 let start =() =>
 {
-    applicationView();
+  authView.login("application");
 }
 
 window.addEventListener('DOMContentLoaded', start );

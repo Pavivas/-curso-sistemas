@@ -1,27 +1,23 @@
-let auth =
-{
-    username: 'test',
-    password: 1234
-}
+
 
 let userModule =
 {
-    read : (data) =>
+    read : (data ) =>
     {
         data = {};
-        data.auth = auth;
+        data.auth = auth.getAuthData();
 
         let connection = new XMLHttpRequest();
 
         connection.open('POST', './backend/user/read.php');
 
-        connection.addEventListener('loadend', event =>{ userModule.processServerResponse(event, 'read') } );
+        connection.addEventListener('loadend', on_user_read );
         connection.send( JSON.stringify(data) );
     },
 
     create : (data) =>
     {
-        data.auth = auth;
+        data.auth = auth.getAuthData();
 
         let connection = new XMLHttpRequest();
 
@@ -33,7 +29,7 @@ let userModule =
 
     edit : ( data ) =>
     {
-        data.auth = auth;
+        data.auth = auth.getAuthData();
 
         let connection = new XMLHttpRequest();
 
@@ -45,28 +41,13 @@ let userModule =
 
     remove : (data) =>
     {
-        data.auth = auth;
+        data.auth = auth.getAuthData();
 
         let connection = new XMLHttpRequest();
 
         connection.open('POST', './backend/user/remove.php');
 
         connection.addEventListener('loadend', event =>{ userModule.processServerResponse(event, 'remove') } );
-        connection.send( JSON.stringify(data) );
-    },
-
-    login : (data) =>
-    {   
-        auth.username = data.username;
-        auth.password = data.password;
-
-        data.auth = auth;
-
-        let connection = new XMLHttpRequest();
-
-        connection.open('POST', './backend/auth/login.php');
-
-        connection.addEventListener('loadend', event =>{ userModule.processServerResponse(event, 'login') } );
         connection.send( JSON.stringify(data) );
     },
 
@@ -246,46 +227,6 @@ let userModule =
         return dialog;
     },
 
-
-    showModalDialog : ( HTMLDialogFormElement, confirmAction, cancelAction ) =>
-    {
-        let modalElement = document.getElementById('modalDialogView');
-       
-        modalElement.innerHTML =
-        `<div class="w3-modal-content w3-animate-top w3-card-4">
-            <header class="w3-container w3-teal"> 
-            <span id="cancel" class="w3-button w3-display-topright">&times;</span>
-        </header>
-        ${ HTMLDialogFormElement.HTMLDialogView }
-            <button id="confirm">Accept</button> 
-        </div>`;
-
-        let confirmButtonClick = (event) =>
-        {
-            if ( confirmAction != undefined || confirmAction != null )
-                confirmAction( HTMLDialogFormElement.formData() );
-            
-            modalElement.style.display = 'none';
-            modalElement.removeEventListener('click',confirmButtonClick);
-            modalElement.removeEventListener('click',cancelButtonClick);
-        }
-
-        let cancelButtonClick = (event) =>
-        {
-            if ( cancelAction != undefined || cancelAction != null )
-                cancelAction(HTMLDialogFormElement.formData());
-                    
-            modalElement.style.display = 'none';
-            modalElement.removeEventListener('click',confirmButtonClick);
-            modalElement.removeEventListener('click',cancelButtonClick);
-        }
-
-        document.getElementById('confirm').addEventListener('click', confirmButtonClick );
-        document.getElementById('cancel').addEventListener('click', cancelButtonClick );
-
-        modalElement.style.display = 'block';
-    },
-
     processActionButtonClickEvents : (event) =>
     {
         let element = event.target;
@@ -297,19 +238,19 @@ let userModule =
             case 'create':
                 let createDialog = userModule.HTMLCreateFormUserDialog();
                 console.log('create request action for new server id');
-                userModule.showModalDialog(createDialog, userModule.create, null );
+                modal(createDialog, userModule.create, null );
             break;
            
             case 'edit':
                 let editDialog = userModule.HTMLEditFormUserDialog(elementId);
                 console.log('edit request action for data id='+elementId);
-                userModule.showModalDialog(editDialog, userModule.edit, null );
+                modal(editDialog, userModule.edit, null );
             break;
             
             case 'remove':
                 let removeDialog = userModule.HTMLRemoveFormUserDialog(elementId);
                 console.log('remove request action for data id='+elementId);
-                userModule.showModalDialog(removeDialog, userModule.remove, null );
+                modal(removeDialog, userModule.remove, null );
             break;
             
             default:
@@ -345,17 +286,17 @@ let userModule =
 
                 case 'create':
                     userModule.updateView( data );
-                    read();
+                    userModule.read();
                 break;
                
                 case 'edit':
                     userModule.updateView( data );
-                    read();
+                    userModule.read();
                 break;
                 
                 case 'remove':
                     userModule.updateView( data );
-                    read();
+                    userModule.read();
                 break;
 
                 case 'login':
@@ -367,9 +308,9 @@ let userModule =
                         userModule.welcome();
                     else
                     {
-                        alert('Usuario y/o contraseÃ±a invÃ¡lida');
+                        alert('Usuario y/o contraseña inválida');
                         let loginDialog = userModule.HTMLLoginFormUserDialog();
-                        showModalDialog( loginDialog, login, null );
+                        modal( loginDialog, login, null );
                     }
                 };
                 
