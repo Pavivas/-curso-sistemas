@@ -10,18 +10,29 @@ $username = $object->username;
 
 try
 {
-	$SQLCode = "SELECT COUNT(*) AS 'result'  FROM user WHERE username = '$username' AND password = '$password'";
-	$result = $connection->query($SQLCode)->fetch(PDO::FETCH_NUM);
+	$SQLCode = "SELECT id FROM user WHERE username = '$username' AND password = '$password'";
+	$id = $connection->query($SQLCode)->fetch(PDO::FETCH_NUM)[0];
 
-	//SHA256, MD5
-
-	if( $result[0] == 0 )
+	if( $id != null )
 	{
-		echo json_encode(false);
+		//Crear la session-key
+		$session_key = uniqid();
+
+		$SQLCodeUpdate = "UPDATE user SET session_key = '$session_key' WHERE id = '$id'";
+		$rows = $connection->query($SQLCodeUpdate)->rowCount();
+		
+		if ( $rows == 1 )
+			echo json_encode($session_key);
+		else
+		{
+			echo json_encode(null);
+			die();
+		}
 	}
 	else
 	{
-		echo json_encode(true);
+		echo json_encode(null);
+		die();
 	}
 }
 catch( PDOException $connectionException )

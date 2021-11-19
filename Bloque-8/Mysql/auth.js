@@ -3,11 +3,11 @@
 let auth =
 {
 	//Peticiones al servidor
-	login: ( user, password ) =>
+	login: ( username, password ) =>
 	{
 		let data =
 		{
-			user: user,
+			username: username,
 			password: password
 		};
 
@@ -19,24 +19,29 @@ let auth =
         connection.send( JSON.stringify(data) );
 	},
 
-	logout: ( data ) =>
+	logout: ( session_key ) =>
 	{
 		let connection = new XMLHttpRequest();
 
         connection.open('POST', './backend/auth/logout.php');
 
         connection.addEventListener('loadend', on_logout );
-        connection.send( JSON.stringify(data) );
+        connection.send( JSON.stringify(session_key) );
 	},
 
 	getAuthData: () =>
 	{
-		return {username: 'test', password: 1234};
+		return sessionStorage.getItem('crud-session-key');
 	},
 
 	getUsername: () =>
 	{
 
+	},
+
+	destroySession: () =>
+	{
+		sessionStorage.removeItem('crud-session-key');
 	}
 }
 

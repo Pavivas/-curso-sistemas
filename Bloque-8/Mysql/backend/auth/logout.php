@@ -1,16 +1,21 @@
 <?php
 
-include_once( "database.php" );
+include_once("../database.php");
+
+$json_body = file_get_contents('php://input');
+$object = json_decode($json_body);
+
+$session_key = $object;
 
 try
 {
-	//Todo tipo de validaciÃ³n de informaciÃ³n, debe ser realizada aquÃ­ de manera obligatoria
-	//ANTES de enviar el comando SQL al motor de base de datos.
-	
-	$SQLCode = "SELECT * FROM user"; 
-	$result = $connection->query($SQLCode)->fetchAll(PDO::FETCH_NUM);
+	$SQLCode = "SELECT id FROM user WHERE session_key = '$session_key'";
+	$id = $connection->query($SQLCode)->fetch(PDO::FETCH_NUM)[0];
 
-	echo json_encode($result);
+	$SQLCodeUpdate = "UPDATE user SET session_key = NULL WHERE id = '$id'";
+	$rows = $connection->query($SQLCodeUpdate)->rowCount();
+		
+	echo json_encode(null);
 }
 catch( PDOException $connectionException )
 {

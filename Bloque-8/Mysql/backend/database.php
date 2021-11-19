@@ -9,11 +9,11 @@ try
 }
 catch (PDOException $connectionException) 
 {
-    //Contestamos al cliente que su peticiรณn no se puede efectuar por un problema
+    //Contestamos al cliente que su petición no se puede efectuar por un problema
     $status = array( status=>'db-error', description=>$connectionException->getMessage() );
     echo json_encode($status);
 
-    //Cortamos la ejecuciรณn del programa del servidor de forma forzada
+    //Cortamos la ejecución del programa del servidor de forma forzada
     die();
 };
 

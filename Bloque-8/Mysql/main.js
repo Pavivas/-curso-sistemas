@@ -1,3 +1,5 @@
+let session_key = null;
+
 let HTMLApplicationView = () =>
 {
 	let HTMLCode = `<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
@@ -95,17 +97,36 @@ let applicationView = () =>
     document.getElementById('myOverlay').addEventListener('click', closeSidebar);
 
     document.getElementById('userModuleButton').addEventListener('click', ()=>{ userModule.read(); closeSidebar();} );
-    document.getElementById('userLogoutBtn').addEventListener('click', ()=>{ auth.logout(null) });
+    document.getElementById('userLogoutBtn').addEventListener('click', ()=>{ auth.logout(session_key) });
 }
 
 let on_login = (event) =>
 {
-  applicationView();
+    if ( event.currentTarget.status == 200 )
+    {
+        let serverResponse = event.currentTarget.responseText;
+        session_key = JSON.parse(serverResponse);
+        
+        if ( session_key != null )
+        {
+            sessionStorage.setItem('crud-session-key', session_key);
+            applicationView();
+        }
+        else
+        {
+            alert("Usuario o contraseña incorrecta");
+        }
+    }
+    else
+    {
+        alert("Fallo de autentificación");
+    }
 }
 
 let on_logout = (event) =>
 {
-  authView.login("application");
+    auth.destroySession();
+    authView.login("application");
 }
 
 let on_user_read = (event) =>
@@ -113,14 +134,22 @@ let on_user_read = (event) =>
   if ( event.currentTarget.status == 200 )
   {
      let serverResponse = event.currentTarget.responseText;
-     data = JSON.parse(serverResponse)       
-     alert( data );
+     data = JSON.parse(serverResponse);
+     userModule.updateView(data);
   }
 }
 
 let start =() =>
 {
-  authView.login("application");
+    if ( auth.getAuthData() == undefined )
+    {
+        authView.login("application");
+    }
+    else
+    {
+        applicationView();
+    }
+
 }
 
 window.addEventListener('DOMContentLoaded', start );

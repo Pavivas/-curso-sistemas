@@ -5,16 +5,20 @@ include_once("../database.php");
 $json_body = file_get_contents('php://input');
 $object = json_decode($json_body);
 
-$__username = $object->auth->username;
-$__password = $object->auth->password;
+$session_key = $object->auth;
 
 try
 {
-	$SQLCode = "SELECT COUNT(*) AS 'result'  FROM user WHERE username = '$__username' AND password = '$__password'";
-	$result = $connection->query($SQLCode)->fetch(PDO::FETCH_NUM);
+	$SQLCode = "SELECT id FROM user WHERE session_key = '$session_key'";
+	$id = $connection->query($SQLCode)->fetch(PDO::FETCH_NUM)[0];
 
-	if( $result[0] == 0 )
+	if( $id != null )
 	{
+		//echo json_encode($session_key);
+	}
+	else
+	{
+		echo json_encode(null);
 		die();
 	}
 }

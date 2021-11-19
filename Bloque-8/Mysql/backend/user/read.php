@@ -1,11 +1,11 @@
 <?php
 
-include_once( "../database.php" );
+include_once("../database.php" );
 include_once("../auth.php");
 
 try
 {
-	//Todo tipo de validaciÃ³n de informaciÃ³n, debe ser realizada aquÃ­ de manera obligatoria
+	//Todo tipo de validación de información, debe ser realizada aquí de manera obligatoria
 	//ANTES de enviar el comando SQL al motor de base de datos.
 	
 	$SQLCode = "SELECT * FROM user"; 
@@ -15,7 +15,7 @@ try
 }
 catch( PDOException $connectionException )
 {
-    $status = array( status=>'db-error', description=>$connectionException->getMessage() );
+    $status = array( status=>'db-error (read.php)', description=>$connectionException->getMessage() );
     echo json_encode($status);
     die();
 }
